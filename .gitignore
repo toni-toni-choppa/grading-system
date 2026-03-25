@@ -1,0 +1,8 @@
+# Ignore build artifacts and IDE files
+target/
+*.class
+.vscode/
+nbproject/
+
+# Annoying macOS Stuff
+.DS_Store
