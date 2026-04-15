@@ -11,19 +11,19 @@ public class Main {
         ArrayList<Student> students = new ArrayList<>();
 
         // Add some sample students / teachers
-        students.add(new Student("johnd", "John Doe"));
-        students.add(new Student("mjackson", "Michael Jackson"));
-        students.add(new Student("jsmith", "John Smith"));
+        students.add(new Student("john", "John Doe"));
+        students.add(new Student("jackson", "Michael Jackson"));
+        students.add(new Student("smith", "John Smith"));
 
         // Create a Course
-        Teacher teacher = new Teacher("janed", "Mrs. Jane Doe");
+        Teacher teacher = new Teacher("jane", "Mrs. Jane Doe");
         Course course = new Course("Math 101", teacher, students);
 
         boolean exit = false;
         boolean loggedIn = false;
 
         do {
-            System.out.println("Enter Username (Leave Empty or Ctrl/Command + C to Exit): ");
+            System.out.println("Enter Username (Leave Empty or Ctrl + C to Exit): ");
             String input = in.nextLine();
 
             // Leave Empty for Exit

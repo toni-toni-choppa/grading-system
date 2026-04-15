@@ -137,17 +137,18 @@ public class Student {
         Scanner in = new Scanner(System.in);
         System.out.printf("Current Grade: %f (%s)\n\n", this.getCurrentGrade(), this.getCurrentGradeLetter());
 
-        System.out.println("1. View Grades Breakdown");
-        System.out.println("2. Logout");
-
         int option = 0;
 
         do {
+            System.out.println("1. View Grades Breakdown");
+            System.out.println("2. Logout");
+            System.out.println();
+
             System.out.print("Enter an Option: ");
             option = in.nextInt();
             switch (option) {
                 case 1:
-                    System.out.println("Grades Breakdown (not implemented yet)");
+                    System.out.println("Grades Breakdown:");
                     System.out.printf("Test: %f\n"
                     + "Quizes: %f\n"
                     + "Homework: %f\n"

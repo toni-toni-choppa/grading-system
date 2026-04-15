@@ -50,13 +50,14 @@ public class Teacher {
             System.out.println("2. View Grades by Assignment Type");
             System.out.println("3. Add Grade");
             System.out.println("4. Logout");
+            System.out.println();
 
             System.out.print("Enter an Option: ");
             option = in.nextInt();
             in.nextLine(); // consume the leftover newline
             switch (option) {
                 case 1:
-                    System.out.println("Grades Breakdown by Student (not implemented yet)");
+                    System.out.println("Grades Breakdown by Student:");
 
                     for (Student s : course.getStudents()) {
                         System.out.printf("Student: %s - Current Grade: %f (%s)\n", s.getName(), s.getCurrentGrade(), s.getCurrentGradeLetter());
@@ -65,7 +66,7 @@ public class Teacher {
                     option = 0;
                     break;
                 case 2:
-                    System.out.println("Grades Breakdown by Assignment Type (not implemented yet)");
+                    System.out.println("Grades Breakdown by Assignment Type:");
                     double tests = 0.00;
                     double quizzes = 0.00;
                     double homework = 0.00;
@@ -81,7 +82,7 @@ public class Teacher {
                     option = 0;
                     break;
                 case 3:
-                    System.out.println("Add Grade (not implemented yet)");
+                    System.out.println("Add Grade:");
                     System.out.println();
 
                     System.out.print("Enter the student's username to add a grade for: ");
