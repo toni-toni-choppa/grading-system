@@ -9,13 +9,17 @@ public class Main {
 
         // Create instances of Student and Teacher
         ArrayList<Student> students = new ArrayList<>();
-        ArrayList<Teacher> teachers = new ArrayList<>();
 
         // Add some sample students / teachers
         students.add(new Student("johnd", "John Doe"));
-        teachers.add(new Teacher("janed", "Mrs. Jane Doe"));
+        students.add(new Student("mjackson", "Michael Jackson"));
+        students.add(new Student("jsmith", "John Smith"));
 
-        String username = null;
+        // Create a Course
+        Teacher teacher = new Teacher("janed", "Mrs. Jane Doe");
+        Course course = new Course("Math 101", teacher, students);
+
+        boolean loggedIn = false;
 
         // Print menu for login
         do {
@@ -23,26 +27,21 @@ public class Main {
 
             String input = in.nextLine();
 
-            for (Student s : students) {
+            for (Student s : course.getStudents()) {
                 if (s.getUsername().equals(input)) {
-                    username = s.getUsername();
                     System.out.println("Welcome, " + s.getName() + "!");
                     s.showMenu();
-                }
-            }
-
-            for (Teacher t : teachers) {
-                if (t.getUsername().equals(input)) {
-                    username = t.getUsername();
-                    System.out.println("Welcome, " + t.getName() + "!");
-                    t.showMenu();
+                    loggedIn = true;
                     break;
                 }
             }
 
-            if (username == null) {
-                System.out.println("[ERROR] Username does not exist. Try Again.");
+            if (course.getTeacher().getUsername().equals(input)) {
+                System.out.println("Welcome, " + course.getTeacher().getName() + "!");
+                course.getTeacher().showMenu(course);
+                loggedIn = true;
+                break;
             }
-        } while (username == null);
+        } while (!loggedIn);
     }
 }

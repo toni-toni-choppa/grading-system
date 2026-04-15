@@ -38,7 +38,7 @@ public class Teacher {
     /**
      * Display the menu of options available to the teacher after login
      */
-    public void showMenu() {
+    public void showMenu(Course course) {
         Scanner in = new Scanner(System.in);
         System.out.printf("Current Grade Average: %f (%s)\n\n", 0.0, "F");
 
@@ -54,10 +54,27 @@ public class Teacher {
             switch (option) {
                 case 1:
                     System.out.println("Grades Breakdown by Student (not implemented yet)");
+
+                    for (Student s : course.getStudents()) {
+                        System.out.printf("Student: %s - Current Grade: %f (%s)\n", s.getName(), s.getCurrentGrade(), s.getCurrentGradeLetter());
+                    }
+
                     option = 0;
                     break;
                 case 2:
                     System.out.println("Grades Breakdown by Assignment Type (not implemented yet)");
+                    double tests = 0.00;
+                    double quizzes = 0.00;
+                    double homework = 0.00;
+
+                    for (Student s : course.getStudents()) {
+                        tests = tests + s.getTestAverage();
+                        quizzes = quizzes + s.getQuizAverage();
+                        homework = homework + s.getHomeworkAverage();
+                    }
+
+                    System.out.printf("Test Avg: %f\nQuiz Avg: %f\nHomework Avg: %f\n", tests, quizzes, homework);
+
                     option = 0;
                     break;
                 case 3:
