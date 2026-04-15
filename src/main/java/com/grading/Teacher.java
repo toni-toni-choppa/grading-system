@@ -40,17 +40,20 @@ public class Teacher {
      */
     public void showMenu(Course course) {
         Scanner in = new Scanner(System.in);
-        System.out.printf("Current Grade Average: %f (%s)\n\n", 0.0, "F");
-
-        System.out.println("1. View Grades by Student");
-        System.out.println("2. View Grades by Assignment Type");
-        System.out.println("3. Logout");
 
         int option = 0;
 
         do {
+            System.out.printf("Current Grade Average: %f (%s)\n\n", 0.0, "F");
+
+            System.out.println("1. View Grades by Student");
+            System.out.println("2. View Grades by Assignment Type");
+            System.out.println("3. Add Grade");
+            System.out.println("4. Logout");
+
             System.out.print("Enter an Option: ");
             option = in.nextInt();
+            in.nextLine(); // consume the leftover newline
             switch (option) {
                 case 1:
                     System.out.println("Grades Breakdown by Student (not implemented yet)");
@@ -78,6 +81,45 @@ public class Teacher {
                     option = 0;
                     break;
                 case 3:
+                    System.out.println("Add Grade (not implemented yet)");
+                    System.out.println();
+
+                    System.out.print("Enter the student's username to add a grade for: ");
+                    String studentUsername = in.nextLine();
+
+                    System.out.print("Enter the assignment type (test/quiz/homework): ");
+                    String assignmentType = in.nextLine();
+
+                    System.out.print("Enter the grade to add: ");
+                    double grade = in.nextDouble();
+                    in.nextLine(); // consume the leftover newline
+
+                    for (Student s : course.getStudents()) {
+                        if (s.getUsername().equals(studentUsername)) {
+                            switch (assignmentType.toLowerCase()) {
+                                case "test":
+                                    s.addTestScore(grade);
+                                    System.out.printf("Added grade %f to test grades for student %s\n", grade, s.getName());
+                                    break;
+                                case "quiz":
+                                    s.addQuizScore(grade);
+                                    System.out.printf("Added grade %f to quiz grades for student %s\n", grade, s.getName());
+                                    break;
+                                case "homework":
+                                    s.addHomeworkScore(grade);
+                                    System.out.printf("Added grade %f to homework grades for student %s\n", grade, s.getName());
+                                    break;
+                                default:
+                                    System.out.println("[ERROR] Invalid assignment type entered.");
+                                    break;
+                            }
+                        }
+                    }
+
+
+                    option = 0;
+                    break;
+                case 4:
                     System.out.println("Logging out...");
                     break;
                 default:
