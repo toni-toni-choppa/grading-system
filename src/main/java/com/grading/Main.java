@@ -15,7 +15,6 @@ public class Main {
         students.add(new Student("johnd", "John Doe"));
         teachers.add(new Teacher("janed", "Mrs. Jane Doe"));
 
-
         String username = null;
 
         // Print menu for login
@@ -28,6 +27,7 @@ public class Main {
                 if (s.getUsername().equals(input)) {
                     username = s.getUsername();
                     System.out.println("Welcome, " + s.getName() + "!");
+                    s.showMenu();
                 }
             }
 
@@ -35,11 +35,14 @@ public class Main {
                 if (t.getUsername().equals(input)) {
                     username = t.getUsername();
                     System.out.println("Welcome, " + t.getName() + "!");
+                    t.showMenu();
                     break;
                 }
             }
 
-            System.out.println("[ERROR] User not found. Please try again.");
+            if (username == null) {
+                System.out.println("[ERROR] Username does not exist. Try Again.");
+            }
         } while (username == null);
     }
 }
